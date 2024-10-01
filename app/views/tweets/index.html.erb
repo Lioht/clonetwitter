@@ -1,44 +1,33 @@
-<!-- Notificación -->
-<p style="color: white; background-color: green; padding: 10px; border-radius: 5px; text-align: center; font-size: 16px;">
-  <%= notice %>
-</p>
+<p class="notice"><%= notice %></p>
 
-<!-- Contenedor principal -->
-<div style="position: relative;">
+<h1 class="title">
+  <%= link_to "Tweets", tweets_path(page: 1) %>
+</h1>
 
-  <!-- Título de la página -->
-  <h1 style="text-align: center; font-family: Arial, sans-serif; color: #333; margin-bottom: 20px;">
-    Tweets
-  </h1>
-
-  <!-- Formulario de búsqueda (posicionado arriba a la derecha) -->
-  <div style="position: absolute; top: 10px; right: 10px;">
-    <%= form_with url: tweets_path, method: :get, class: "search-form" do |form|%>
-      <%= form.text_field :query_text, placeholder: ('Search Tweet'), value: params[:query_text], class: "search-input" %>
-    <%end%>
+<div class="header">
+  <div class="new-tweet">
+    <%= link_to "New Tweet", new_tweet_path, class: "btn-new-tweet" %>
   </div>
 
+  <div class="search">
+    <%= form_with url: tweets_path, method: :get, class: "search-form" do |form| %>
+      <%= form.text_field :query_text, placeholder: 'Search "Eastern" Tweet', value: params[:query_text], class: "search-input" %>
+    <% end %>
+  </div>
 </div>
 
-<!-- Contenedor de tweets -->
-<div id="tweets" style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
+<div id="tweets" class="tweets-list">
   <% @tweets.each do |tweet| %>
-    <div style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+    <div class="tweet-item">
       <%= render tweet %>
-      <p style="text-align: center; margin-top: 10px;">
-        <%= link_to "Show this tweet", tweet, style: "text-decoration: none; color: #007BFF; font-weight: bold;" %>
+      <p>
+        <%= link_to "Show this tweet", tweet, class: "btn-show" %>
       </p>
     </div>
   <% end %>
 </div>
 
-<!-- Botón para crear un nuevo tweet -->
-<div style="text-align: center; margin-top: 20px;">
-  <%= link_to "New tweet", new_tweet_path, class: "btn-new-tweet" %>
-</div>
-
-<!-- Paginación -->
-<div style="text-align: center; margin-top: 30px;">
-  <%= raw pagy_nav(@pagy) %>
+<div class="pagination">
+  <%=raw pagy_nav(@pagy)%>
 </div>
 

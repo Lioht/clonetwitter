@@ -1,11 +1,11 @@
-<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333; margin-bottom: 20px;">
-  New Tweet
-</h1>
+<h1 class="title">New Tweets</h1>
 
-<div class="tweet-form-container">
+<div class="form-container">
   <%= render "form", tweet: @tweet %>
 </div>
 
-<div class="back-link-container">
-  <%= link_to "Back to tweets", tweets_path, class: "back-link" %>
+<div class="actions">
+  <%= link_to "Show this Tweet", @tweet, class: "btn" %>
+  <%= link_to "Back to Tweets", tweets_path, class: "btn" %>
 </div>
+

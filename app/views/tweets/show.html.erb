@@ -1,22 +1,11 @@
-<!-- Notificación -->
-<p style="color: white; background-color: green; padding: 10px; border-radius: 5px; text-align: center; font-size: 16px;">
-  <%= notice %>
-</p>
+<p class="notice"><%= notice %></p>
 
-<!-- Mostrar el tweet -->
-<%= render @tweet %>
-
-<!-- Contenedor de botones -->
-<div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
-
-  <!-- Botón para editar el tweet -->
-  <%= link_to "Edit this tweet", edit_tweet_path(@tweet), class: "btn btn-primary" %>
-
-  <!-- Botón para volver a la lista de tweets -->
-  <%= link_to "Back to tweets", tweets_path, class: "btn btn-secondary" %>
-
-  <!-- Botón para eliminar el tweet -->
-  <%= button_to "Delete this tweet", @tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-
+<div class="tweet-container">
+  <%= render @tweet %>
 </div>
 
+<div class="actions">
+  <%= link_to "Edit this Tweet", edit_tweet_path(@tweet), class: "btn-edit" %>
+  <%= link_to "Back to Tweets", tweets_path, class: "btn-back" %>
+  <%= button_to "Delete this Tweet", @tweet, method: :delete, class: "btn-delete" %>
+</div>
